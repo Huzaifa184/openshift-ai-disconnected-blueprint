@@ -9,12 +9,12 @@ KServe model serving, and a verified DeepSeek R1 inference endpoint. All self ma
 
 | Component | Notes |
 |-----------|-------|
-| OpenShift 4.21 UPI | Connected UPI · self-hosted DNS + LB |
-| NVIDIA GPU Operator | Driver 580.126.20 · DCGM metrics live |
-| RHOAI 3.4.0 | DataScienceCluster reconciled |
+| OpenShift 4.21 UPI | Connected UPI · self-hosted HAProxy + BIND9 |
+| NVIDIA GPU Operator | Driver 580.126.20 · DCGM metrics confirmed |
+| RHOAI 3.4.0 | DataScienceCluster reconciled · dashboard accessible |
 | MinIO AIStor | In-cluster S3 · 899 GB capacity |
 | KServe RawDeployment | InferenceService Ready=True |
-| DeepSeek R1 1.5B w8a8 | 12–17 tok/s · chain-of-thought confirmed |
+| DeepSeek R1 1.5B w8a8 | 12–17 tok/s · chain-of-thought reasoning confirmed |
 
 
 ---
