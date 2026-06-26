@@ -1,8 +1,7 @@
 # Red Hat OpenShift AI : GPU Platform
 
 Production-pattern OpenShift AI 3.4.0 cluster on bare-metal ESXi with GPU passthrough,
-KServe model serving, and a verified DeepSeek R1 inference endpoint.
-No managed control plane. No cloud GPU credits. No abstractions hiding the failure modes.
+KServe model serving, and a verified DeepSeek R1 inference endpoint. All self managed
 
 ---
 
