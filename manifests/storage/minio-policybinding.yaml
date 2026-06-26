@@ -1,0 +1,11 @@
+apiVersion: sts.min.io/v1beta1
+kind: PolicyBinding
+metadata:
+  name: aistor-object-store
+  namespace: aistor
+spec:
+  application:
+    namespace: aistor
+    serviceaccount: aistor-object-store
+  policies:
+  - consoleAdmin

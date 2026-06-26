@@ -1,0 +1,27 @@
+apiVersion: aistor.min.io/v1
+kind: ObjectStore
+metadata:
+  name: ai-minio
+  namespace: aistor
+spec:
+  cache:
+    enabled: false
+  certificates:
+    disableAutoCert: false
+  configuration:
+    name: storage-configuration
+  mountPath: /export
+  podManagementPolicy: Parallel
+  pools:
+  - name: pool-0
+    servers: 1
+    volumesPerServer: 1
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 900Gi
+        storageClassName: local-volume-sc
+  pvcProtection: false
