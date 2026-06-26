@@ -423,7 +423,8 @@ DCGM_FI_DEV_POWER_USAGE{instance=~"worker1.*"}
 # GPU temperature (celsius)
 DCGM_FI_DEV_GPU_TEMP{instance=~"worker1.*"}
 ```
-Results:
+## Results:
+---
 GPU utilisation (%)
 <img width="1825" height="643" alt="image" src="https://github.com/user-attachments/assets/6ec9061f-f3ec-49b7-93ee-42bfd8262534" />
 
@@ -436,7 +437,7 @@ GPU power draw (watts)
 GPU temperature (celsius)
 <img width="905" height="329" alt="image" src="https://github.com/user-attachments/assets/539d33bd-bbe7-4280-8e3c-f3ad88899420" />
 
-
+---
 
 
 Access via OpenShift Console → Observe → Metrics, or via the Prometheus API:
