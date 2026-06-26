@@ -51,9 +51,6 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 | Worker nodes | 3× RHCOS VMs | ESXi 7.0 | Dell Workstation |
 | GPU worker (worker1) | 1× RHCOS VM | ESXi 7.0 · DirectPath I/O | Dell Workstation |
 
-**OpenShift version:** 4.21 · Connected UPI
-**RHOAI version:** 3.4.0 Self-Managed
-
 ## Cluster Specifications
 
 **OpenShift:** 4.21 · Connected UPI · Self-hosted HAProxy + BIND9
@@ -69,4 +66,5 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 | worker3.openshift-ai.huzaifa.lab | worker | 8 cores | 24 GB | 200 GB | ESXi |
 
 > OpenShift reports slightly lower values than provisioned due to RHCOS kernel and
+> system process reservations — expected behaviour, not a misconfiguration.
 > system process reservations — this is expected behaviour, not a misconfiguration.
