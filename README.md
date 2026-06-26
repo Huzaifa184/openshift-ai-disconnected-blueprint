@@ -10,11 +10,11 @@ Production-pattern OpenShift AI 3.4.0 platform, self-hosted on bare-metal ESXi, 
 | Component | Notes |
 |-----------|-------|
 | OpenShift 4.21 UPI | Connected UPI · self-hosted HAProxy + BIND9 |
-| NVIDIA GPU Operator | Driver 580.126.20 · DCGM metrics confirmed |
-| RHOAI 3.4.0 | DataScienceCluster reconciled · dashboard accessible |
+| NVIDIA GPU Operator | Driver 580.126.20 with DCGM metrics  |
+| Redhat Openshift AI 3.4.0 | DataScienceCluster with dashboard  |
 | MinIO AIStor | In-cluster S3 · 899 GB capacity |
 | KServe RawDeployment | InferenceService Ready=True |
-| DeepSeek R1 1.5B w8a8 | 12–17 tok/s · chain-of-thought reasoning confirmed |
+| DeepSeek R1 1.5B w8a8 | 12–17 tok/s with chain-of-thought reasoning confirmed |
 
 ---
 
