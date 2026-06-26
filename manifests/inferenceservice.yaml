@@ -1,0 +1,46 @@
+apiVersion: v1
+items:
+- apiVersion: serving.kserve.io/v1beta1
+  kind: InferenceService
+  metadata:
+    name: deepseek-r1-distill-qwen-15b
+    namespace: deepseek-reasoning-demo
+  spec:
+    predictor:
+      automountServiceAccountToken: false
+      deploymentStrategy:
+        type: RollingUpdate
+      maxReplicas: 1
+      minReplicas: 1
+      model:
+        args:
+        - --max-model-len=2048
+        - --gpu-memory-utilization=0.85
+        - --dtype=auto
+        - --max-num-seqs=4
+        - --enforce-eager
+        env:
+        - name: VLLM_COMPILE_DISABLE_FULL_GRAPH
+          value: "1"
+        - name: PYTORCH_ALLOC_CONF
+          value: expandable_segments:True
+        - name: VLLM_WORKER_MULTIPROC_METHOD
+          value: spawn
+        modelFormat:
+          name: vLLM
+        name: ""
+        resources:
+          limits:
+            cpu: "2"
+            memory: 6Gi
+            nvidia.com/gpu: "1"
+          requests:
+            cpu: "1"
+            memory: 2Gi
+            nvidia.com/gpu: "1"
+        runtime: deepseek-r1-distill-qwen-15b
+        storage:
+          key: minio-models
+          path: models/deepseek-r1-distill-qwen-1.5b
+      serviceAccountName: minio-models-sa
+      timeout: 30
