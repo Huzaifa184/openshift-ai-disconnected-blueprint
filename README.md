@@ -250,7 +250,7 @@ oc get pods -n redhat-ods-operator
 
 Created automatically by the operator on first install. Configures the applications namespace, monitoring namespace, and trusted CA bundle.
 
-Key fields from live cluster:
+Key fields:
 
 ```yaml
 spec:
@@ -262,7 +262,7 @@ spec:
     managementState: Managed
 ```
 
-Status: `phase: Ready`
+
 
 ### DataScienceCluster
 
