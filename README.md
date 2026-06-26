@@ -79,6 +79,38 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 
 
 ---
+
+
 <img width="859" height="511" alt="image" src="https://github.com/user-attachments/assets/32f5b78a-ad3b-4d48-b32c-d8d98739681b" />
 ---
 
+
+## Architecture
+
+### Topology
+
+**Hybrid hypervisor — deliberate, not default.**
+Master nodes run nested inside VMware Workstation Pro on a Windows laptop.
+Worker nodes run on bare-metal ESXi on a separate physical workstation.
+The GPU-bearing worker (worker1) is on bare-metal ESXi — the only viable path
+for PCI passthrough on consumer hardware.
+
+**Connected UPI — not IPI.**
+Self-hosted HAProxy and BIND9 on a dedicated RHEL 10 bastion node. Mirrors the
+install pattern used in regulated environments where infrastructure is explicitly
+managed rather than abstracted away. Full control over DNS and load-balancing
+at the cost of manual provisioning.
+
+### Stack
+
+| Layer | Technology |
+|-------|------------|
+| Hypervisor | VMware ESXi 7.0 + VMware Workstation Pro |
+| Operating System | RHCOS (immutable, MCO-managed) |
+| Container Platform | OpenShift 4.21 · Connected UPI |
+| GPU Enablement | NVIDIA GPU Operator · NFD · DCGM Exporter |
+| AI Platform | Red Hat OpenShift AI 3.4.0 |
+| Object Storage | MinIO AIStor (in-cluster S3) |
+| Model Serving | KServe RawDeployment · vLLM 0.18.0 |
+| Persistent Storage | Local Storage Operator · LocalVolumeSet |
+| Ingress | OpenShift Router (HAProxy) · Edge TLS termination |
