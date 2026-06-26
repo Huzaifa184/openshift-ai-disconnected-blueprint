@@ -143,7 +143,7 @@ Production-pattern OpenShift AI 3.4.0 platform, self-hosted on bare-metal ESXi, 
   - **BIND9:** Authoritative DNS for `openshift-ai.huzaifa.lab` — forward + reverse zones, wildcard `*.apps`
   - **Apache httpd:** Served RHCOS ignition files during UPI bootstrap
 - **UPI install flow:** `install-config.yaml` → manifests → ignition configs → ISO boot → bootstrap → masters → workers → bootstrap removed
-- **Configuration files:** Redacted `install-config.yaml`, `haproxy.cfg`, `named.conf`, zone files in [`infra/`](infra/)
+- **Configuration files:** Redacted [`infra/install-config.yaml`](infra/install-config.yaml), [`infra/haproxy.cfg`](infra/haproxy.cfg), [`infra/named.conf`](infra/named.conf), zone files in [`infra/`](infra/)
 ### AI Platorm Stack
 
 | Layer | Operator / Tool | Version | Notes |
