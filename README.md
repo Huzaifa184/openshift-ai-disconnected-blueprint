@@ -51,7 +51,7 @@ KServe model serving, and a verified DeepSeek R1 inference endpoint. All self ma
 
 | Role | Count | Hypervisor | Host |
 |------|-------|------------|------|
-| Master nodes | 3× RHCOS VMs | VMware Workstation Pro | Laptop |
+| Master nodes | 3× RHCOS VMs | VMware Workstation Pro | Lenovo Legion Laptop |
 | Worker nodes | 3× RHCOS VMs | ESXi 7.0 | Dell Workstation |
 | GPU worker (worker1) | 1× RHCOS VM | ESXi 7.0 · DirectPath I/O | Dell Workstation |
 
