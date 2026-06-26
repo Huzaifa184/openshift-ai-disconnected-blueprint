@@ -56,7 +56,7 @@ Production-pattern OpenShift AI 3.4.0 platform, self-hosted on bare-metal ESXi, 
 |------|-------|------------|------|
 | Master nodes | 3× RHCOS VMs | VMware Workstation Pro | Lenovo Legion Laptop |
 | Worker nodes | 2× RHCOS VMs | ESXi 7.0 | Dell Workstation |
-| GPU worker (worker1) | 1× RHCOS VM | ESXi 7.0 · DirectPath I/O | Dell Workstation |
+| GPU Worker node (worker1) | 1× RHCOS VM | ESXi 7.0 · DirectPath I/O | Dell Workstation |
 
 ## Cluster Specifications
 
