@@ -95,13 +95,19 @@ Production-pattern OpenShift AI 3.4.0 platform, self-hosted on bare-metal ESXi, 
 
 ### Topology
 
-**Hybrid hypervisor**
-Master nodes run nested inside VMware Workstation Pro on a Windows laptop.
-Worker nodes run on bare-metal ESXi on a separate physical workstation.
-The GPU-bearing worker (worker1) is on bare-metal ESXi, the viable path for PCI passthrough on consumer hardware.
+**Hybrid hypervisor** : Master nodes run nested inside VMware Workstation Pro on a Windows laptop. Worker nodes run on bare-metal ESXi on a separate physical workstation. The GPU-bearing worker (worker1) is on bare-metal ESXi — the only viable path for PCI passthrough on consumer hardware.
 
-**Connected UPI**
-Self-hosted HAProxy and BIND9 on a dedicated RHEL 10 bastion node. Mirrors the install pattern used in regulated environments where infrastructure is explicitly managed rather than abstracted away.
+**Connected UPI** : Self-hosted HAProxy and BIND9 on a dedicated RHEL 10 bastion node. Mirrors the install pattern used in regulated environments where infrastructure is explicitly managed rather than abstracted away.
+
+**GPU passthrough** : GTX 1660 Super passed through from ESXi to worker1 via VMware DirectPath I/O. Hypervisor detection suppressed via `hypervisor.cpuid.v0 = FALSE` in the VM config. Memory fully reserved , passthrough devices DMA directly into guest memory and cannot be swapped.
+
+**NFD + NVIDIA GPU Operator** : Node Feature Discovery labels the GPU node automatically. The GPU Operator builds and loads the NVIDIA kernel module against the running RHCOS kernel via a privileged DaemonSet , the only supported path for driver installation on an immutable RHCOS node. Driver 580.126.20 confirmed via `nvidia-smi` inside the guest.
+
+**OpenShift AI** : RHOAI 3.4.0 installed via OperatorHub. `DataScienceCluster` CR created explicitly to trigger component provisioning — operator running alone is insufficient. KServe configured in RawDeployment mode with ModelMesh disabled. Hardware profile `gtx1660super-gpu` maps the GPU to RHOAI workloads.
+
+**Storage** : Local Storage Operator provisions raw ESXi disks as PersistentVolumes across worker nodes. MinIO AIStor deployed as in-cluster S3 — model artifacts stored in bucket `ai-initial`, pulled by the KServe storage initializer on pod start.
+
+**Model serving** : DeepSeek R1 1.5B w8a8 deployed via KServe InferenceService backed by the vLLM NVIDIA GPU ServingRuntime. CUDA graph capture disabled (`--enforce-eager`) , required on 6 GB VRAM where the graph pool alone would exhaust available memory. Inference confirmed at 12–17 tok/s via OpenAI-compatible endpoint.
 
 ### Openshift Cluster Setup
 
