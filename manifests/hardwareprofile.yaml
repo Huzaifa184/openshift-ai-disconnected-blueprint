@@ -1,0 +1,29 @@
+apiVersion: infrastructure.opendatahub.io/v1
+kind: HardwareProfile
+metadata:
+  name: gtx1660super-gpu
+  namespace: redhat-ods-applications
+  annotations:
+    opendatahub.io/display-name: gtx1660super-gpu
+    opendatahub.io/description: Worker1 — TU116 passthrough, single GPU
+    opendatahub.io/disabled: "false"
+spec:
+  identifiers:
+  - defaultCount: 2
+    displayName: CPU
+    identifier: cpu
+    maxCount: "6"
+    minCount: 1
+    resourceType: CPU
+  - defaultCount: 6Gi
+    displayName: Memory
+    identifier: memory
+    maxCount: 24Gi
+    minCount: 2Gi
+    resourceType: Memory
+  - defaultCount: 1
+    displayName: GPU
+    identifier: nvidia.com/gpu
+    maxCount: 1
+    minCount: 1
+    resourceType: Accelerator

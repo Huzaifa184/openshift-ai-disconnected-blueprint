@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: deepseek-reasoning-demo
+  labels:
+    kubernetes.io/metadata.name: deepseek-reasoning-demo
+    modelmesh-enabled: "false"
+    opendatahub.io/dashboard: "true"

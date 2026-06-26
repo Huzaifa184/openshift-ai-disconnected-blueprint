@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deepseek-chat-ui
+  namespace: deepseek-reasoning-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deepseek-chat-ui
+  template:
+    metadata:
+      labels:
+        app: deepseek-chat-ui
+    spec:
+      containers:
+      - name: httpd
+        image: busybox:latest
+        command: ["/bin/sh", "-c"]
+        args:
+        - httpd -f -p 8080 -h /config
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: html
+          mountPath: /config
+      volumes:
+      - name: html
+        configMap:
+          name: deepseek-frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deepseek-chat-ui
+  namespace: deepseek-reasoning-demo
+spec:
+  selector:
+    app: deepseek-chat-ui
+  ports:
+  - port: 8080
+    targetPort: 8080
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: deepseek-chat-ui
+  namespace: deepseek-reasoning-demo
+spec:
+  to:
+    kind: Service
+    name: deepseek-chat-ui
+    weight: 100
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+  wildcardPolicy: None

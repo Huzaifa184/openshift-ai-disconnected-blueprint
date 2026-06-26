@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: model-downloader-sa
+  namespace: deepseek-reasoning-demo
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: model-downloader
+  namespace: deepseek-reasoning-demo
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      serviceAccountName: model-downloader-sa
+      securityContext:
+        runAsUser: 0
+      containers:
+      - name: downloader
+        image: python:3.11-slim
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          pip install -q huggingface_hub boto3 && \
+          python3 -c "
+          import boto3, os, urllib3, pathlib
+          from huggingface_hub import snapshot_download
+          urllib3.disable_warnings()
+          snapshot_download(
+              repo_id='RedHatAI/DeepSeek-R1-Distill-Qwen-1.5B-quantized.w8a8',
+              local_dir='/tmp/model')
+          s3 = boto3.client('s3',
+              endpoint_url=os.environ['AWS_S3_ENDPOINT'],
+              aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+              aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
+              verify=False)
+          for f in pathlib.Path('/tmp/model').rglob('*'):
+              if f.is_file():
+                  key = f'models/deepseek-r1-distill-qwen-1.5b/{f.relative_to(\"/tmp/model\")}'
+                  s3.upload_file(str(f), os.environ['AWS_S3_BUCKET'], key)
+          print('Done.')
+          "
+        env:
+        - name: AWS_S3_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: minio-models
+              key: AWS_S3_ENDPOINT
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: minio-models
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-models
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_S3_BUCKET
+          valueFrom:
+            secretKeyRef:
+              name: minio-models
+              key: AWS_S3_BUCKET
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+          limits:
+            memory: "6Gi"
+            cpu: "4"

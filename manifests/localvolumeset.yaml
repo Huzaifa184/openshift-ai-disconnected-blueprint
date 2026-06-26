@@ -1,0 +1,23 @@
+apiVersion: local.storage.openshift.io/v1alpha1
+kind: LocalVolumeSet
+metadata:
+  name: example-localvolumeset
+  namespace: openshift-local-storage
+spec:
+  deviceInclusionSpec:
+    deviceMechanicalProperties:
+    - Rotational
+    - NonRotational
+    deviceTypes:
+    - disk
+  fsType: xfs
+  maxDeviceCount: 10
+  nodeSelector:
+    nodeSelectorTerms:
+    - matchExpressions:
+      - key: storage
+        operator: In
+        values:
+        - local
+  storageClassName: local-volume-sc
+  volumeMode: Filesystem
