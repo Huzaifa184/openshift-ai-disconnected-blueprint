@@ -137,6 +137,7 @@ at the cost of manual provisioning.
 Two storage layers: local persistent volumes for stateful workloads, and MinIO AIStor as the in-cluster S3-compatible object store for model artifacts.
 
 ### Local Storage Operator
+Go to ESXI host and attach 900GB disk from the datastore to each worker (thin provisioning does the magic of allocating more than available, since I am only using worker 1 mainly for AI workloads,I am safe here)
 
 Raw disks on each worker node are provisioned as PersistentVolumes using the Local Storage Operator. A `LocalVolumeSet` watches nodes labelled `storage=local` and automatically creates PVs from any available disk : rotational or non-rotational.
 
