@@ -43,7 +43,8 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 
 ---
 
-<img width="6048" height="5548" alt="IMG_5489 - Copy" src="https://github.com/user-attachments/assets/eee012a1-a1ea-4c81-9639-043114f929bc" />
+<img width="6048" height="5548" alt="IMG_5489 - Copy (2)" src="https://github.com/user-attachments/assets/da09e065-4a11-4047-a7a8-ad9c406814c7" />
+
 
 
 ## Cluster Topology
