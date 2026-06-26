@@ -1,0 +1,42 @@
+$TTL    604800
+@       IN      SOA     ocp-svc.huzaifa.lab. contact.huzaifa.lab (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800     ; Minimum
+)
+        IN      NS      ocp-svc
+
+ocp-svc.huzaifa.lab.          IN      A       192.168.x.x
+
+; Temp Bootstrap Node
+ocp-bootstrap.huzaifa.lab.        IN      A      192.168.x.x
+
+; Control Plane Nodes
+master1.openshift-ai.huzaifa.lab.         IN      A      192.168.x.x
+master2.openshift-ai.huzaifa.lab.         IN      A      192.168.x.x
+master3.openshift-ai.huzaifa.lab.         IN      A      192.168.x.x
+
+; Worker Nodes
+worker1.openshift-ai.huzaifa.lab.        IN      A      192.168.x.x
+worker2.openshift-ai.huzaifa.lab.        IN      A      192.168.x.x
+worker3.openshift-ai.huzaifa.lab.        IN      A      192.168.x.x
+
+; OpenShift AI - Load Balancer VIPs
+api.openshift-ai.huzaifa.lab.        IN    A    192.168.x.x
+api-int.openshift-ai.huzaifa.lab.    IN    A    192.168.x.x
+*.apps.openshift-ai.huzaifa.lab.     IN    A    192.168.x.x
+
+; ETCD Cluster
+etcd-0.openshift-ai.huzaifa.lab.   IN    A     192.168.x.x
+etcd-1.openshift-ai.huzaifa.lab.   IN    A     192.168.x.x
+etcd-2.openshift-ai.huzaifa.lab.   IN    A     192.168.x.x
+
+; OpenShift AI SRV Records
+_etcd-server-ssl._tcp.openshift-ai.huzaifa.lab. 86400 IN SRV 0 10 2380 etcd-0.openshift-ai.huzaifa.lab.
+_etcd-server-ssl._tcp.openshift-ai.huzaifa.lab. 86400 IN SRV 0 10 2380 etcd-1.openshift-ai.huzaifa.lab.
+_etcd-server-ssl._tcp.openshift-ai.huzaifa.lab. 86400 IN SRV 0 10 2380 etcd-2.openshift-ai.huzaifa.lab.
+
+oauth-openshift.apps.openshift-ai.huzaifa.lab.            IN     A     192.168.x.x
+console-openshift-console.apps.openshift-ai.huzaifa.lab.  IN     A     192.168.x.x

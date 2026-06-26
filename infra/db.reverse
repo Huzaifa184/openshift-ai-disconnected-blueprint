@@ -1,0 +1,26 @@
+$TTL 604800
+@     IN      SOA     ocp-svc.huzaifa.lab. contact.huzaifa.lab. (
+                    1         ; Serial
+               604800         ; Refresh
+                86400         ; Retry
+              2419200         ; Expire
+               604800         ; Minimum
+)
+
+      IN      NS      ocp-svc.huzaifa.lab.
+
+; Reverse records for OpenShift nodes
+x     IN     PTR     ocp-bootstrap.huzaifa.lab.
+x     IN     PTR     ocp-svc.huzaifa.lab.
+x     IN     PTR     master1.openshift-ai.huzaifa.lab.
+x     IN     PTR     worker1.openshift-ai.huzaifa.lab.
+x     IN     PTR     worker2.openshift-ai.huzaifa.lab.
+x     IN     PTR     worker3.openshift-ai.huzaifa.lab.
+x     IN     PTR     master2.openshift-ai.huzaifa.lab.
+x     IN     PTR     master3.openshift-ai.huzaifa.lab.
+x     IN     PTR     quay.mirror.openshift-ai.huzaifa.lab.
+x     IN     PTR     api.openshift-ai.huzaifa.lab.
+x     IN     PTR     api-int.openshift-ai.huzaifa.lab.
+x     IN     PTR     apps.openshift-ai.huzaifa.lab.
+x     IN     PTR     oauth-openshift.apps.openshift-ai.huzaifa.lab.
+x     IN     PTR     console-openshift-console.apps.openshift-ai.huzaifa.lab.
