@@ -103,7 +103,7 @@ The GPU-bearing worker (worker1) is on bare-metal ESXi, the viable path for PCI 
 **Connected UPI**
 Self-hosted HAProxy and BIND9 on a dedicated RHEL 10 bastion node. Mirrors the install pattern used in regulated environments where infrastructure is explicitly managed rather than abstracted away.
 
-### Infrastructure Setup
+### Openshift Cluster Setup
 
 - **Static IP allocation:** All nodes assigned static IPs prior to installation. No DHCP dependency ensures predictable DNS resolution and HAProxy backend targeting across reboots.
 - **Bridged networking on Workstation Pro:** Master VMs placed directly on the physical LAN segment alongside ESXi workers. Required for OVN-Kubernetes and the API VIP to function across the hybrid topology.
@@ -113,7 +113,7 @@ Self-hosted HAProxy and BIND9 on a dedicated RHEL 10 bastion node. Mirrors the i
   - **Apache httpd:** Served RHCOS ignition files during UPI bootstrap
 - **UPI install flow:** `install-config.yaml` → manifests → ignition configs → ISO boot → bootstrap → masters → workers → bootstrap removed
 - **Configuration files:** Redacted `install-config.yaml`, `haproxy.cfg`, `named.conf`, zone files in [`infra/`](infra/)
-### Stack
+### AI Platorm Stack
 
 | Layer | Operator / Tool | Version | Notes |
 |-------|----------------|---------|-------|
