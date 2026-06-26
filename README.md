@@ -84,6 +84,10 @@ KServe model serving, and a verified DeepSeek R1 inference endpoint. All self-ma
 <img width="859" height="511" alt="image" src="https://github.com/user-attachments/assets/32f5b78a-ad3b-4d48-b32c-d8d98739681b" />
 
 ---
+<img width="949" height="494" alt="image" src="https://github.com/user-attachments/assets/655774a4-43b6-419a-8b86-440a079b3318" />
+
+---
+<img width="907" height="352" alt="image" src="https://github.com/user-attachments/assets/1aef2494-2a6c-4f73-b475-7ec6b05792ec" />
 
 ## Architecture
 
@@ -701,4 +705,13 @@ oc rollout restart deployment/deepseek-chat-ui -n deepseek-reasoning-demo
 ```
 
 ---
+DeepSeek R1 is a reasoning model, it generates an internal chain-of-thought before producing a final answer. 
+
+This is visible in the UI as the thinking block above the response. The reasoning process itself consumes tokens, so `max_tokens` controls the combined budget for both thinking and the final answer. 
+
+On the 1.5B distilled variant, the model does not self-regulate verbosity, it will reason at length regardless of question complexity. For simple questions, set `max_tokens` between 300–600 to allow the reasoning to complete and the answer to appear.
+
+For complex technical questions the reasoning adds genuine value and can be shown or hidden via the Think toggle.
+
+<img width="949" height="494" alt="image" src="https://github.com/user-attachments/assets/d48d5959-25c7-42e6-b371-f4fe2315af46" />
 
