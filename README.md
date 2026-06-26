@@ -412,16 +412,16 @@ Key PromQL queries:
 
 ```promql
 # GPU utilisation (%)
-DCGM_FI_DEV_GPU_UTIL{instance=~"worker1.*"}
+DCGM_FI_DEV_GPU_UTIL{Hostname=~"worker1.*"}
 
 # GPU memory used (bytes)
-DCGM_FI_DEV_FB_USED{instance=~"worker1.*"}
+DCGM_FI_DEV_FB_USED{Hostname=~"worker1.*"}
 
 # GPU power draw (watts)
-DCGM_FI_DEV_POWER_USAGE{instance=~"worker1.*"}
+DCGM_FI_DEV_POWER_USAGE{Hostname=~"worker1.*"}
 
 # GPU temperature (celsius)
-DCGM_FI_DEV_GPU_TEMP{instance=~"worker1.*"}
+DCGM_FI_DEV_GPU_TEMP{Hostname=~"worker1.*"}
 ```
 ## Results:
 ---
