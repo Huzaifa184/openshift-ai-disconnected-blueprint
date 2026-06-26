@@ -67,7 +67,7 @@ Production-pattern OpenShift AI 3.4.0 platform, self-hosted on bare-metal ESXi, 
 | worker1.openshift-ai.huzaifa.lab | worker · GPU | 16 cores | 64 GB | 200 GB | ESXi · GTX 1660 Super passthrough |
 | worker2.openshift-ai.huzaifa.lab | worker | 8 cores | 24 GB | 200 GB | ESXi |
 | worker3.openshift-ai.huzaifa.lab | worker | 8 cores | 24 GB | 200 GB | ESXi |
-| ocp-svc.huzaifa.lab | bastion · HAProxy · DNS | 4 cores | 8 GB | 150 GB | RHEL 10 · Workstation Pro |
+| ocp-svc.huzaifa.lab | bastion · LB · DNS | 4 cores | 8 GB | 150 GB | RHEL 10 · Workstation Pro |
 
 > OpenShift reports slightly lower values than provisioned due to RHCOS kernel and system process reservations : expected behaviour, not a misconfiguration.
 
