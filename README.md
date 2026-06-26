@@ -68,6 +68,8 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 | worker1.openshift-ai.huzaifa.lab | worker · GPU | 16 cores | 64 GB | 200 GB | ESXi · GTX 1660 Super passthrough |
 | worker2.openshift-ai.huzaifa.lab | worker | 8 cores | 24 GB | 200 GB | ESXi |
 | worker3.openshift-ai.huzaifa.lab | worker | 8 cores | 24 GB | 200 GB | ESXi |
+| ocp-svc.huzaifa.lab | bastion · HAProxy · DNS | 4 cores | 8 GB | 150 GB | RHEL 10 · Workstation Pro |
+
 ---
 <img width="949" height="504" alt="image" src="https://github.com/user-attachments/assets/e0332e2d-55fb-4dbe-b84e-cd3128ecc0b3" />
 > OpenShift reports slightly lower values than provisioned due to RHCOS kernel and
