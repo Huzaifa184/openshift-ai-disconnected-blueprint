@@ -72,9 +72,7 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 
 ---
 <img width="949" height="504" alt="image" src="https://github.com/user-attachments/assets/e0332e2d-55fb-4dbe-b84e-cd3128ecc0b3" />
-> OpenShift reports slightly lower values than provisioned due to RHCOS kernel and
-> system process reservations — expected behaviour, not a misconfiguration.
-> system process reservations — this is expected behaviour, not a misconfiguration.
+> OpenShift reports slightly lower values than provisioned due to RHCOS kernel and system process reservations, expected behaviour
 
 ---
 <img width="1891" height="1014" alt="image" src="https://github.com/user-attachments/assets/b6b91083-fa30-49a2-8ad7-d43309f57e2f" />
