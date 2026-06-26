@@ -43,9 +43,8 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 
 ---
 
-![Lab Setup](assets/IMG_5489.jpeg)
+<img width="6048" height="5548" alt="IMG_5489 - Copy" src="https://github.com/user-attachments/assets/eee012a1-a1ea-4c81-9639-043114f929bc" />
 
-![Lab Setup](https://raw.githubusercontent.com/Huzaifa184/openshift-rhoai-gpu-platform/main/assets/IMG_5489.jpeg)
 
 ## Cluster Topology
 
