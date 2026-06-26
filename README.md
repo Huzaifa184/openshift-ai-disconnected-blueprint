@@ -43,7 +43,7 @@ No managed control plane. No cloud GPU credits. No abstractions hiding the failu
 
 ---
 
-![Lenovo laptop running OpenShift master nodes via VMware Workstation Pro, alongside Dell Precision T5810 with GTX 1660 Super passthrough to worker1](assets/IMG_5489.jpeg)
+![Lab Setup](assets/IMG_5489.jpeg)
 
 
 ## Cluster Topology
