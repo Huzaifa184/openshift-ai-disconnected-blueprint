@@ -103,14 +103,13 @@ at the cost of manual provisioning.
 
 ### Stack
 
-| Layer | Technology |
-|-------|------------|
-| Hypervisor | VMware ESXi 7.0 + VMware Workstation Pro |
-| Operating System | RHCOS (immutable, MCO-managed) |
-| Container Platform | OpenShift 4.21 · Connected UPI |
-| GPU Enablement | NVIDIA GPU Operator · NFD · DCGM Exporter |
-| AI Platform | Red Hat OpenShift AI 3.4.0 |
-| Object Storage | MinIO AIStor (in-cluster S3) |
-| Model Serving | KServe RawDeployment · vLLM 0.18.0 |
-| Persistent Storage | Local Storage Operator · LocalVolumeSet |
-| Ingress | OpenShift Router (HAProxy) · Edge TLS termination |
+| Layer | Operator / Tool | Version |
+|-------|----------------|---------|
+| Node Feature Discovery | NFD Operator | 4.21.0 |
+| GPU Enablement | NVIDIA GPU Operator (Certified) | 26.3.2 |
+| AI Platform | Red Hat OpenShift AI (RHODS) | 3.4.0 |
+| Model Serving | KServe · vLLM ServingRuntime | v0.18.0 |
+| Object Storage | MinIO AIStor Operator | 2026.4.13 |
+| Persistent Storage | Local Storage Operator | 4.21.0 |
+| Service Mesh | OpenShift Service Mesh | 3.2.0 |
+| GPU Sharing | NVIDIA Device Plugin · time-slicing | 26.3.2 |
