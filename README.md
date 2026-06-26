@@ -649,10 +649,3 @@ oc rollout restart deployment/deepseek-chat-ui -n deepseek-reasoning-demo
 
 ---
 
-## Certifications
-
-RHCA Infrastructure · Kubestronaut
-
----
-
-*Internal addresses and credentials are redacted. Replace `<CLUSTER_DOMAIN>` with your cluster base domain in any manifests or commands.*
